@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfólio Completo - Vitor Ruan</title>
+<style>
+  /* RESET */
+  *, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body.dark {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  a {
+    color: #2980b9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  a:hover, a:focus {
+    color: #1c5980;
+    outline: none;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding-bottom: 40px;
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  header img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #2980b9;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(41, 128, 185, 0.5);
+    transition: transform 0.3s ease;
+  }
+
+  header img:hover, header img:focus {
+    transform: scale(1.05);
+    outline: none;
+  }
+
+  header h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    letter-spacing: 1.5px;
+  }
+
+  body.dark header h1 {
+    color: #bb86fc;
+  }
+
+  header p {
+    color: #7f8c8d;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+  }
+
+  body.dark header p {
+    color: #b0a8c7;
+  }
+
+  /* SOCIAL LINKS */
+  nav.social-links {
+    margin-bottom: 30px;
+  }
+
+  nav.social-links a {
+    margin: 0 15px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2980b9;
+    user-select: none;
+  }
+
+  nav.social-links a:hover, nav.social-links a:focus {
+    color: #1c5980;
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 900px;
+    margin: 50px auto;
+    background: white;
+    padding: 35px 50px;
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  body.dark section {
+    background: #1e1e1e;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.7);
+  }
+
+  section:nth-of-type(1) { animation-delay: 1.5s; }
+  section:nth-of-type(2) { animation-delay: 1.8s; }
+  section:nth-of-type(3) { animation-delay: 2.1s; }
+  section:nth-of-type(4) { animation-delay: 2.4s; }
+  section:nth-of-type(5) { animation-delay: 2.7s; }
+  section:nth-of-type(6) { animation-delay: 3s; }
+
+  section h2 {
+    margin-bottom: 25px;
+    color: #2980b9;
+    border-bottom: 3px solid #2980b9;
+    padding-bottom: 10px;
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  body.dark section h2 {
+    color: #bb86fc;
+    border-color: #bb86fc;
+  }
+
+  /* SOBRE MIM */
+  #about p {
+    font-size: 1.15rem;
+    color: #555;
+    text-align: justify;
+    line-height: 1.8;
+  }
+
+  body.dark #about p {
+    color: #ccc;
+  }
+
+  /* HABILIDADES */
+  #skills ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  #skills li {
+    background: #2980b9;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(41, 128, 185, 0.6);
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+
+  #skills li:hover, #skills li:focus {
+    background-color: #1c5980;
+    cursor: default;
+    outline: none;
+  }
+
+  /* PROJETOS */
+  .project {
+    margin-bottom: 30px;
+  }
+
+  .project h3 {
+    color: #34495e;
+    font-weight: 700;
+    font-size: 1.4rem;
+  }
+
+  body.dark .project h3 {
+    color: #e1bee7;
+  }
+
+  .project p {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.5;
+  }
+
+  body.dark .project p {
+    color: #ccc;
+  }
+
+  .project a {
+    display: inline-block;
+    margin-top: 12px;
+    color: #2980b9;
+    font-weight: 700;
+    font-size: 1rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+
+  .project a:hover, .project a:focus {
+    border-color: #2980b9;
+    outline: none;
+  }
+
+  /* EXPERIÊNCIA */
+  .job {
+    margin-bottom: 30px;
+  }
+
+  .job h3 {
+    color: #34495e;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  body.dark .job h3 {
+    color: #e1bee7;
+  }
+
+  .job span {
+    display: block;
+    font-style: italic;
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+
+  body.dark .job span {
+    color: #aaa;
+  }
+
+  .job p {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.5;
+  }
+
+  body.dark .job p {
+    color: #ccc;
+  }
+
+  /* CONTATO */
+  #contact p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  body.dark #contact p {
+    color: #ddd;
+  }
+
+  #contact a {
+    color: #2980b9;
+    font-weight: 700;
+  }
+
+  #contact a:hover, #contact a:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+
+  #contact form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+  }
+
+  #contact input, 
+  #contact textarea {
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1.8px solid #ccc;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+  }
+
+  body.dark #contact input,
+  body.dark #contact textarea {
+    background: #333;
+    border-color: #555;
+    color: #eee;
+  }
+
+  #contact input:focus,
+  #contact textarea:focus {
+    border-color: #2980b9;
+    outline: none;
+  }
+
+  #contact button {
+    width: 140px;
+    padding: 14px 0;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+  }
+
+  #contact button:hover, #contact button:focus {
+    background-color: #1c5980;
+    outline: none;
+  }
+
+  /* DARK MODE TOGGLE BUTTON */
+  #darkModeToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2980b9;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(41, 128, 185, 0.6);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+  }
+
+  #darkModeToggle:hover, #darkModeToggle:focus {
+    background-color: #1c5980;
+    outline: none;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section {
+      padding: 25px 20px;
+      margin: 30px 15px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #skills ul {
+      justify-content: flex-start;
+    }
+  }
+</style>
+</head>
+<body>
+
+<button id="darkModeToggle" aria-label="Alternar modo escuro">Modo Escuro</button>
+
+<header>
+  <img src="C:\Users\vitor\OneDrive\Área de Trabalho\Portfolio\assets\perfil.jpg" alt="Foto de perfil de Vitor Ruan" tabindex="0" />
+  <h1>Vitor Ruan</h1>
+  <p>Desenvolvedor de Software & Consultor SAP HCM Jr | AMS Support</p>
+  <nav class="social-links" aria-label="Redes sociais de Vitor Ruan">
+    <a href="https://github.com/vitorruan" target="_blank" rel="noopener" aria-label="GitHub de Vitor Ruan">GitHub</a>
+    <a href="https://www.linkedin.com/in/vitor-ruan777" target="_blank" rel="noopener" aria-label="LinkedIn de Vitor Ruan">LinkedIn</a>
+  </nav>
+</header>
+
+<section id="about" tabindex="0" aria-label="Sobre Vitor Ruan">
+  <h2>Sobre Mim</h2>
+  <p>Iniciei minha trajetória no mundo SAP, onde aprendi desde as hard skills mais técnicas até as soft skills mais valiosas: lidar com críticas, administrar frustrações e crescer com os desafios. Com o tempo, desenvolvi conhecimento e experiência em consultoria SAP HCM, com foco nos submódulos de Administração de Pessoal (PA) e eSocial. Tive a oportunidade de atuar em projetos relevantes para empresas como EDP Brasil, Citrosuco e Vila Galé, sempre priorizando a entrega de soluções funcionais, seguras e alinhadas às necessidades do negócio.
+
+Paralelamente, sigo me desenvolvendo como estudante de Desenvolvimento de Software Multiplataforma, com especial interesse em cloud computing e gestão. Tenho aprendido muito com professores e colegas, participando de projetos práticos que envolvem tecnologias como Node.js, MongoDB, scikit-learn, Arduino e mobile.
+
+Sou movido pela curiosidade, pela vontade de evoluir e por um desejo constante de aprender.</p>
+</section>
+
+<section id="skills" tabindex="0" aria-label="Habilidades técnicas">
+  <h2>Habilidades</h2>
+  <ul>
+    <li>TypeScript</li>
+    <li>Node.js</li>
+    <li>React</li>
+    <li>MongoDB</li>
+    <li>SAP HCM</li>
+    <li>Docker</li>
+  </ul>
+</section>
+
+<section id="projects" tabindex="0" aria-label="Projetos realizados">
+  <h2>Projetos</h2>
+
+  <article class="project" tabindex="0">
+    <h3>Projeto Cadastro Professores</h3>
+    <p>Projeto feito em grupo desenvolvido com Node.js, TypeScript e MongoDB para gerenciamento de cadastro de professores.</p>
+    <a href="https://github.com/proj-cadastro/projeto-cadastro-app" target="_blank" rel="noopener">Repositório GitHub</a>
+  </article>
+
+  <article class="project" tabindex="0">
+    <h3>Projeto Carrinho Arduino</h3>
+    <p>Projeto feito em grupo utilizando Arduino para a criação de um carrinho controlado por um app de celular.</p>
+    <img src="C:\Users\vitor\OneDrive\Área de Trabalho\Portfolio\assets\Carrinho.gif" alt="">
+  </article>
+
+</section>
+
+<section id="experience" tabindex="0" aria-label="Experiência profissional">
+  <h2>Experiência</h2>
+
+  <article class="job" tabindex="0">
+    <h3>Consultor SAP HCM Trainee - Inetum</h3>
+    <span>2023 - 2024</span>
+    <p>Atuação em projetos para clientes como EDP Brasil, Citrosuco e Vila Galé, focado em Administração de Pessoal e eSocial.</p>
+  </article>
+
+  <article class="job" tabindex="0">
+    <h3>Consultor SAP HCM - Jr - Capgemini</h3>
+    <span>2025 - Presente</span>
+    <p>Apoio como suporte de consultoria no módulo de HCM, atendendo chamados do ServiceNow e configurando o ambiente para os clientes..</p>
+  </article>
+</section>
+
+<section id="contact" tabindex="0" aria-label="Contato">
+  <h2>Contato</h2>
+  <p>Você pode me encontrar por email ou redes sociais.</p>
+  <p>Email: <a href="mailto:vitor.ruan05@gmail.com">vitor.ruan05@gmail.com</a></p>
+  <form aria-label="Formulário de contato">
+    <input type="text" name="name" placeholder="Seu nome" aria-label="Seu nome" required />
+    <input type="email" name="email" placeholder="Seu email" aria-label="Seu email" required />
+    <textarea name="message" placeholder="Sua mensagem" aria-label="Sua mensagem" rows="5" required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<script>
+  const toggleButton = document.getElementById('darkModeToggle');
+  const body = document.body;
+
+  // Verifica se modo escuro está salvo no localStorage
+  if(localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('dark');
+    toggleButton.textContent = 'Modo Claro';
+  }
+
+  toggleButton.addEventListener('click', () => {
+    body.classList.toggle('dark');
+
+    if(body.classList.contains('dark')) {
+      localStorage.setItem('darkMode', 'enabled');
+      toggleButton.textContent = 'Modo Claro';
+    } else {
+      localStorage.setItem('darkMode', 'disabled');
+      toggleButton.textContent = 'Modo Escuro';
+    }
+  });
+
+  // Prevenir envio de formulário real (para exemplo)
+  const form = document.querySelector('#contact form');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Mensagem enviada! Obrigado pelo contato.');
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
